@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "interaction-2a59d027a3a5-act",
+  "status": "done",
+  "requested_url": "https://example.com/",
+  "final_url": "https://example.com/",
+  "title": "Example Domain",
+  "created_at": "2026-10-14T09:25:27.131420+00:00",
+  "html": "<!DOCTYPE html>\n\n<html lang=\"en\"><head><meta charset=\"utf-8\"/><meta content=\"default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' data:; form-action 'none'; base-uri 'none'\" http-equiv=\"Content-Security-Policy\"/><meta charset=\"utf-8\"/><link href=\"data:,\" rel=\"icon\"/><meta content=\"width=device-width,initial-scale=1\" name=\"viewport\"/><title>Example Domain</title><style>html{color-scheme:light dark;background:light-dark(#eee,#222)}body{font:16px/1.6 system-ui,sans-serif;max-width:26em;margin:auto;padding:25vh 2em 2em;text-align:center}</style></head><body><style>svg{display:block;margin:-2.75em auto 0;opacity:.55}p+p{font-size:.875em;opacity:.6}</style><svg aria-hidden=\"true\" fill=\"currentColor\" height=\"44\" viewbox=\"0,0,20,20\" width=\"44\"><path d=\"M6 4H3v12q4 0 7 1.5-1-3.5-4-4.5V2q3.5 1 4 3v12.5q3-1.5 7-1.5V4q-4.5 0-7 1\" fill=\"none\" stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-width=\"1.3\"></path><g transform=\"rotate(-6,13.6,8.3)\"><path d=\"M11.5 6.6h1.8v1.8l-1 1.6-.6-.3.8-1.3h-1z\" id=\"q\"></path><use href=\"#q\" x=\"2.4\"></use></g></svg><p lang=\"en\">This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.</p><p dir=\"rtl\" lang=\"ar\">هذا النطاق مُخصص للاستخدام في أمثلة التوثيق دون الحاجة إلى إذن. هذه ليست خدمة، يُرجى تجنب الاعتماد عليها لأغراض الاختبار والمراقبة.</p><p lang=\"zh\">该域名仅用于文档示例，无需获得许可。这并非一项服务，请勿将其用于测试和监控目的。</p><p lang=\"fr\">L’usage de ce domaine est réservé à des exemples de documentation, sans autorisation préalable.  Il ne s’agit pas d’un service ; son utilisation à des fins de test ou de surveillance est à éviter.</p><p lang=\"ru\">Данный домен предназначен для использования в примерах документации без необходимости получения предварительного разрешения. Это не сервис; не рекомендуется его использование для тестирования и мониторинга.</p><p lang=\"es\">Este dominio está destinado al uso en ejemplos de documentación sin necesidad de permiso. Esto no es un servicio; evitar utilizarlo para realizar pruebas o monitoreos.</p><a data-relay-id=\"e1\" href=\"https://iana.org/help/example-domains\">Learn more</a>\n</body></html>",
+  "assets": [
+    {
+      "url": "https://example.com/s.js",
+      "path": "assets/66443126071d98c02f2395ee.js",
+      "content_type": "text/javascript; charset=utf-8",
+      "bytes": 1963,
+      "sha256": "535ef2c3425a9d1214bcd1a8d5430d904444135e48a4f113ba1e6f6e29925b0a"
+    }
+  ],
+  "warnings": [],
+  "actions_completed": 4,
+  "elements": [
+    {
+      "element_id": "e1",
+      "tag": "a",
+      "type": null,
+      "text": "Learn more",
+      "selector": "[data-relay-id=\"e1\"]",
+      "href": "https://iana.org/help/example-domains",
+      "disabled": false,
+      "visible": true,
+      "rect": {
+        "x": 639,
+        "y": 711.03125,
+        "width": 87,
+        "height": 22
+      }
+    }
+  ],
+  "viewport": {
+    "width": 1365,
+    "height": 768,
+    "scroll_x": 0,
+    "scroll_y": 19
+  },
+  "screenshot": {
+    "path": "screenshot.png",
+    "bytes": 87493,
+    "sha256": "feb7d20ee0c72495596473d5384e9ce1e79b0fc5b86a5d4cf50639bf134a7b8a"
+  },
+  "zip": {
+    "path": "responses/interaction-2a59d027a3a5-act.zip",
+    "bytes": 84516,
+    "sha256": "a2b67ef986cac02afaaaf18a70e0a4fd224d4005f5e5e417c7d1ab9b59c6f862"
+  },
+  "snapshot": {
+    "javascript_enabled_during_capture": true,
+    "javascript_removed_from_output": true
+  },
+  "session_id": "browser-6b5cb0f5d719",
+  "revision": 2,
+  "session_ttl_seconds": 900.0,
+  "request_sha": "5ac9a9dbdc87bb43b8eb967f0120a7f95dd9ccfe"
+}
