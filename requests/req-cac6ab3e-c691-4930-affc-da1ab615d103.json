@@ -1,0 +1,15 @@
+{
+  "session_id": "session-test-cd3dd95d",
+  "expected_revision": 1,
+  "actions": [
+    {
+      "type": "click",
+      "element_id": "e43"
+    },
+    {
+      "type": "wait",
+      "ms": 1000
+    }
+  ],
+  "id": "req-cac6ab3e-c691-4930-affc-da1ab615d103"
+}
