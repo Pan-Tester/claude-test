@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "id": "interaction-ee02169ff696-act",
+  "status": "error",
+  "request_sha": "4f93baf39767d36695b00345aa133711d26a2d4d",
+  "created_at": "2026-10-14T09:22:34.401746+00:00",
+  "error": {
+    "type": "InteractionError",
+    "message": "Interaction failed after 0 completed actions (TimeoutError)"
+  },
+  "actions_completed": 0,
+  "session_id": "browser-afcc0b6f0163",
+  "revision": 2
+}
