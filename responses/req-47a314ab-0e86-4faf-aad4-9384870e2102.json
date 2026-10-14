@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "id": "req-47a314ab-0e86-4faf-aad4-9384870e2102",
+  "status": "done",
+  "requested_url": "https://debil.ovh/",
+  "final_url": "https://debil.ovh/",
+  "title": "debil.jpg",
+  "created_at": "2026-10-14T08:57:10.870412+00:00",
+  "html": "<!DOCTYPE html>\n<html lang=\"pl\"><head><meta charset=\"utf-8\"/><meta content=\"default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; media-src 'self' data:; form-action 'none'; base-uri 'none'\" http-equiv=\"Content-Security-Policy\"/>\n<meta charset=\"utf-8\"/>\n<meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"/>\n<title>debil.jpg</title>\n<meta content=\"#a855f7\" name=\"theme-color\"/>\n<meta content=\"debil.jpg\" property=\"og:title\"/>\n<meta content=\"Czasami trzeba być głupim, żeby móc coś zrobić.\" property=\"og:description\"/>\n<meta content=\"website\" property=\"og:type\"/>\n<meta content=\"https://cdn.discordapp.com/avatars/743378293910142998/84deb7f9e4fb6a3f40c54f22a81646fd.png?size=1024\" property=\"og:image\"/>\n<link href=\"assets/ff193bbefec6a5c33693c2fe.png\" id=\"favicon\" rel=\"icon\" type=\"image/png\"/>\n<link href=\"assets/90d26beabecd0fbf1846595e.css\" rel=\"stylesheet\"/>\n<link href=\"assets/f8e2580e68e0b2cdc04ae8c1.css\" rel=\"stylesheet\"/>\n<link href=\"assets/7c60df4b3742b3df3196bd8f.css\" rel=\"stylesheet\"/>\n<link href=\"assets/71e652a7b3bb79f0dff366c7.css\" rel=\"stylesheet\"/>\n<link href=\"assets/9693203622602734cbf1b98e.css\" rel=\"stylesheet\"/>\n<style>\n    header {\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      text-align: center;\n      padding: 30px 20px 25px;\n    }\n\n    header p {\n      color: #cbd5e1;\n      font-style: italic;\n      margin-top: 6px;\n      font-size: 1.05rem;\n    }\n\n    .avatar-wrapper {\n      position: relative;\n      width: 80px;\n      height: 80px;\n      margin: 45px auto 16px;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n    }\n\n    .discord-bubble {\n      position: absolute;\n      bottom: calc(100% + 14px);\n      left: 50%;\n      transform: translateX(-50%) translateY(4px) scale(0.95);\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      gap: 3px;\n      background: rgba(30, 14, 50, 0.94);\n      border: 1px solid rgba(168, 85, 247, 0.38);\n      color: #f1f5f9;\n      padding: 7px 16px;\n      border-radius: 16px;\n      font-size: 0.84rem;\n      font-weight: 500;\n      white-space: nowrap;\n      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);\n      backdrop-filter: blur(12px);\n      opacity: 0;\n      visibility: hidden;\n      pointer-events: none;\n      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);\n      z-index: 10;\n      max-width: 90vw;\n    }\n\n    .discord-bubble.visible {\n      opacity: 1;\n      visibility: visible;\n      transform: translateX(-50%) translateY(0) scale(1);\n      pointer-events: auto;\n    }\n\n    .discord-bubble .bubble-arrow {\n      position: absolute;\n      bottom: -6px;\n      left: 50%;\n      transform: translateX(-50%);\n      width: 0;\n      height: 0;\n      border-left: 6px solid transparent;\n      border-right: 6px solid transparent;\n      border-top: 6px solid rgba(168, 85, 247, 0.4);\n    }\n\n    .bubble-activity {\n      display: flex;\n      align-items: center;\n      gap: 6px;\n      font-size: 0.84rem;\n      color: #f1f5f9;\n    }\n\n    .bubble-activity strong {\n      color: #c084fc;\n    }\n\n    .bubble-custom {\n      font-size: 0.8rem;\n      color: #cbd5e1;\n    }\n\n    .discord-icon {\n      width: 80px;\n      height: 80px;\n      border-radius: 50%;\n      border: 2px solid rgba(192, 132, 252, 0.45);\n      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.25);\n      display: block;\n      object-fit: cover;\n      margin: 0;\n      transition: border-color 0.3s ease, box-shadow 0.3s ease;\n    }\n\n    .avatar-decoration {\n      position: absolute;\n      top: -12%;\n      left: -12%;\n      width: 124%;\n      height: 124%;\n      pointer-events: none;\n      z-index: 2;\n    }\n\n    .status-dot {\n      position: absolute;\n      bottom: 1px;\n      right: 1px;\n      width: 18px;\n      height: 18px;\n      border-radius: 50%;\n      border: 3px solid #0c0716;\n      background-color: #64748b;\n      z-index: 3;\n      transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);\n    }\n\n    .status-dot.online {\n      background-color: #22c55e;\n      box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);\n    }\n\n    .status-dot.idle {\n      background-color: #f59e0b;\n      box-shadow: 0 0 10px rgba(245, 158, 11, 0.7);\n    }\n\n    .status-dot.dnd {\n      background-color: #ef4444;\n      box-shadow: 0 0 10px rgba(239, 68, 68, 0.7);\n    }\n\n    .status-dot.offline {\n      background-color: #64748b;\n    }\n\n    #about {\n      text-align: center;\n      line-height: 1.7;\n    }\n\n    #about h1 {\n      margin-bottom: 6px;\n      font-size: 2.2rem;\n      background: linear-gradient(135deg, #ffffff 40%, #c084fc 100%);\n      -webkit-background-clip: text;\n      -webkit-text-fill-color: transparent;\n      background-clip: text;\n    }\n\n    #about h4 {\n      margin-bottom: 26px;\n      color: #c084fc;\n      font-weight: 500;\n      font-size: 1.15rem;\n    }\n\n    .bio-text {\n      max-width: 650px;\n      margin: 0 auto 30px;\n      text-align: center;\n    }\n\n    .bio-text p {\n      font-size: 1.1rem;\n      line-height: 1.8;\n      color: #e2e8f0;\n      margin: 14px 0;\n      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);\n    }\n\n    .contact-box {\n      margin: 28px auto 10px;\n      padding: 24px 30px;\n      background: rgba(26, 13, 44, 0.7);\n      border: 1px solid rgba(168, 85, 247, 0.25);\n      border-radius: 18px;\n      max-width: 480px;\n      backdrop-filter: blur(12px);\n      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);\n      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;\n    }\n\n    .contact-box:hover {\n      transform: translateY(-3px);\n      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);\n      border-color: rgba(192, 132, 252, 0.45);\n    }\n\n    .contact-box h2 {\n      margin-bottom: 16px;\n      font-size: 1.35rem;\n      color: #f8fafc;\n    }\n\n    .contact-item {\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      gap: 10px;\n      margin: 10px 0;\n      padding: 10px 16px;\n      border-radius: 12px;\n      background: rgba(168, 85, 247, 0.08);\n      border: 1px solid rgba(168, 85, 247, 0.16);\n      cursor: pointer;\n      transition: all 0.2s ease;\n      font-size: 1.05rem;\n      color: #e2e8f0;\n    }\n\n    .contact-item:hover {\n      background: rgba(168, 85, 247, 0.2);\n      border-color: rgba(192, 132, 252, 0.4);\n    }\n\n    .contact-item i.item-icon {\n      font-size: 1.15rem;\n      color: #c084fc;\n    }\n\n    .contact-item .copy-icon {\n      font-size: 0.85rem;\n      opacity: 0.6;\n      margin-left: 6px;\n      transition: opacity 0.2s ease;\n      color: #c084fc;\n    }\n\n    .contact-item:hover .copy-icon {\n      opacity: 1;\n    }\n\n    .contact-item a {\n      color: #c084fc;\n      transition: color 0.2s ease, text-shadow 0.2s ease;\n    }\n\n    .contact-item a:hover {\n      color: #f3e8ff;\n      text-shadow: 0 0 10px rgba(192, 132, 252, 0.8);\n    }\n\n    #copy-toast {\n      position: fixed;\n      bottom: 25px;\n      left: 50%;\n      transform: translateX(-50%) translateY(30px);\n      background: rgba(26, 13, 44, 0.95);\n      border: 1px solid rgba(192, 132, 252, 0.5);\n      color: #f1f5f9;\n      padding: 10px 22px;\n      border-radius: 30px;\n      font-size: 0.9rem;\n      font-weight: 500;\n      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(168, 85, 247, 0.3);\n      backdrop-filter: blur(10px);\n      opacity: 0;\n      pointer-events: none;\n      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n      z-index: 2000;\n    }\n\n    #copy-toast.show {\n      transform: translateX(-50%) translateY(0);\n      opacity: 1;\n    }\n\n    footer {\n      text-align: center;\n      padding: 30px 20px 40px;\n      border-top: 1px solid rgba(168, 85, 247, 0.15);\n      margin-top: 30px;\n    }\n\n    footer p {\n      color: #94a3b8;\n      font-size: 0.9rem;\n      margin: 0;\n      cursor: pointer;\n      user-select: none;\n      transition: color 0.2s ease, text-shadow 0.2s ease;\n    }\n\n    footer p:hover {\n      color: #c084fc;\n      text-shadow: 0 0 10px rgba(192, 132, 252, 0.5);\n    }\n\n    #video-modal {\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100vw;\n      height: 100vh;\n      background: rgba(0, 0, 0, 0.96);\n      z-index: 99999;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      opacity: 0;\n      visibility: hidden;\n      pointer-events: none;\n      transition: opacity 0.3s ease, visibility 0.3s ease;\n    }\n\n    #video-modal.active {\n      opacity: 1;\n      visibility: visible;\n      pointer-events: auto;\n    }\n\n    #video-modal iframe {\n      width: 100%;\n      height: 100%;\n      border: none;\n    }\n\n    #video-modal-close {\n      position: absolute;\n      top: 20px;\n      right: 25px;\n      background: rgba(26, 13, 44, 0.8);\n      border: 1px solid rgba(168, 85, 247, 0.5);\n      color: #f1f5f9;\n      width: 44px;\n      height: 44px;\n      border-radius: 50%;\n      font-size: 1.4rem;\n      line-height: 1;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      cursor: pointer;\n      z-index: 100000;\n      transition: all 0.2s ease;\n      backdrop-filter: blur(8px);\n    }\n\n    #video-modal-close:hover {\n      background: rgba(239, 68, 68, 0.85);\n      border-color: #ef4444;\n      transform: scale(1.1);\n    }\n\n    @media (max-width: 768px) {\n      .contact-box {\n        padding: 18px;\n        margin: 24px 10px 10px;\n      }\n    }\n  </style>\n</head>\n<body>\n<header>\n<div class=\"avatar-wrapper\">\n<div class=\"discord-bubble visible\" id=\"discord-bubble\"><div class=\"bubble-activity\"><i class=\"fab fa-youtube\" style=\"color: #ef4444;\"></i> Listening to YouTube Music: <strong>Coolio - Gangsters Paradise (HBz &amp; Robby Burke Bounce Remix) | Videoclip</strong> — HBz</div><div class=\"bubble-custom\">🔥 soldered a 0201 resistor without a microscope</div><div class=\"bubble-arrow\"></div></div>\n<img alt=\"Ikona\" class=\"discord-icon\" id=\"discord-avatar\" src=\"assets/52b47b43e5e660f1f0712964.png\"/>\n<img alt=\"Decoration\" class=\"avatar-decoration\" id=\"discord-decoration\" src=\"assets/77a8821f65d0599ab7745cb8.png\" style=\"display: block;\"/>\n<span class=\"status-dot idle\" id=\"discord-status-dot\" title=\"Discord: Zaraz wracam (Idle)\"></span>\n</div>\n<h1 class=\"discord-username-dynamic\">debil.jpg</h1>\n<p>„Czasami trzeba być głupim, żeby móc coś zrobić.”</p>\n<div class=\"social-buttons\">\n<a class=\"social-button youtube\" href=\"https://youtube.com/@Pan_Tester\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"YouTube Pan Tester\">\n<svg viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M19.615 3.184c-1.709-.515-8.615-.515-8.615-.515s-6.906 0-8.615.515a3.57 3.57 0 0 0-2.488 2.488C0 7.381 0 12 0 12s0 4.619.515 6.328a3.57 3.57 0 0 0 2.488 2.488c1.709.515 8.615.515 8.615.515s6.906 0 8.615-.515a3.57 3.57 0 0 0 2.488-2.488C24 16.619 24 12 24 12s0-4.619-.515-6.328a3.57 3.57 0 0 0-2.488-2.488zM9.545 15.568V8.432L15.818 12l-6.273 3.568z\"></path>\n</svg>\n</a>\n<a class=\"social-button discord\" href=\"https://discord.gg/QNcDd4HdXV\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"Discord\">\n<svg viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M20.317 4.369a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.118.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z\"></path>\n</svg>\n</a>\n</div>\n</header>\n<main>\n<section class=\"tab-content active\" id=\"about\">\n<h1>Siema!</h1>\n<h4>To ja, debil (aka Miłosz)</h4>\n<div class=\"bio-text\">\n<p>Od dziecka kocham bawić się i eksperymentować ze wszystkim, co działa na prąd.</p>\n<p>Dzięki temu potrafię programować, montować filmy i robić \"bomby\" ze starych baterii.</p>\n<p>Poza kompem lubię jazdę na rowerze i słuchanie muzyki.</p>\n</div>\n<div class=\"contact-box\">\n<h2>Kontakt:</h2>\n<div class=\"contact-item\" data-copy=\"Pan_tester@debil.ovh\" title=\"Kliknij, aby skopiować e-mail\">\n<i class=\"fas fa-envelope item-icon\"></i>\n<span>e-mail: <a href=\"mailto:Pan_tester@debil.ovh\">Pan_tester@debil.ovh</a></span>\n<i class=\"far fa-copy copy-icon\"></i>\n</div>\n<div class=\"contact-item\" data-copy=\"debil.jpg\" id=\"contact-discord-item\" title=\"Kliknij, aby skopiować nick Discord\">\n<i class=\"fab fa-discord item-icon\"></i>\n<span>Discord: <strong class=\"discord-username-dynamic\">debil.jpg</strong></span>\n<i class=\"far fa-copy copy-icon\"></i>\n</div>\n</div>\n</section>\n</main>\n<div id=\"copy-toast\">Skopiowano do schowka! 📋</div>\n<footer>\n<p>© 2026 debil.jpg This site may explode</p>\n</footer>\n<div id=\"video-modal\">\n<button aria-label=\"Zamknij\" id=\"video-modal-close\">×</button>\n<div id=\"video-container\" style=\"width: 100%; height: 100%;\"></div>\n</div>\n\n</body></html>",
+  "assets": [
+    {
+      "url": "https://debil.ovh/assets/css/style.css",
+      "path": "assets/90d26beabecd0fbf1846595e.css",
+      "content_type": "text/css",
+      "bytes": 17968,
+      "sha256": "c757747321c6c6debd57381115fb8e41f93e639832ccf02f5c4dc7743cdb2b95"
+    },
+    {
+      "url": "https://debil.ovh/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+      "path": "assets/a9b64e47aa08c4f192e5389c.bin",
+      "content_type": "application/javascript",
+      "bytes": 1239,
+      "sha256": "2595496fe48df6fcf9b1bc57c29a744c121eb4dd11566466bc13d2e52e6bbcc8"
+    },
+    {
+      "url": "https://cdn.discordapp.com/avatars/743378293910142998/84deb7f9e4fb6a3f40c54f22a81646fd?size=1024",
+      "path": "assets/81bac6539909c942baed5c72.png",
+      "content_type": "image/png",
+      "bytes": 313797,
+      "sha256": "bdee19a68f2aff6b4ad33d82e026fd55b4669a89a5303340829d8761fc194179"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@400;500&display=swap",
+      "path": "assets/f8e2580e68e0b2cdc04ae8c1.css",
+      "content_type": "text/css; charset=utf-8",
+      "bytes": 14128,
+      "sha256": "1d63ed0debefa4cb2751c80c49000adddfd4653e4e64b582cbe7ffcbbdf25537"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&family=Poppins:wght@700&display=swap",
+      "path": "assets/7c60df4b3742b3df3196bd8f.css",
+      "content_type": "text/css; charset=utf-8",
+      "bytes": 4501,
+      "sha256": "6070e7330e19229066d6febf35a7c563f339fe666533c1139e76bcc828db1a25"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap",
+      "path": "assets/71e652a7b3bb79f0dff366c7.css",
+      "content_type": "text/css; charset=utf-8",
+      "bytes": 11631,
+      "sha256": "50d9c035b30df9e84c9fa1ffe8e50fccb8e844ac7b5e06b5bf7039c243c104a3"
+    },
+    {
+      "url": "https://debil.ovh/assets/js/script.js?v=12",
+      "path": "assets/299b338b3f2e6d0e1e4cb658.bin",
+      "content_type": "application/javascript",
+      "bytes": 9475,
+      "sha256": "875ccec091205d73aa14a1fbb9955bdfede63ced312678b06654dc17e6f49362"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css",
+      "path": "assets/9693203622602734cbf1b98e.css",
+      "content_type": "text/css; charset=utf-8",
+      "bytes": 86038,
+      "sha256": "7126c94de49348f15aa4df1b52922b7daffd9a3aae7ca8a0f71434f95ddc99d3"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2",
+      "path": "assets/490cf052db97ab91673eaaa2.woff2",
+      "content_type": "font/woff2",
+      "bytes": 7816,
+      "sha256": "9338e65fc077355c7a87ae0d64cc101e23b9bf8ad78ae65f0f319c857311b526"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-muw.woff2",
+      "path": "assets/b877d76363543389ea0696e0.woff2",
+      "content_type": "font/woff2",
+      "bytes": 48320,
+      "sha256": "d8e4fe0452aa2076429a9bb5d8757d00a994dd95986cf950e9a1a371b9a072a0"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2",
+      "path": "assets/df4cda0b243bf852c68a4c07.bin",
+      "content_type": "application/octet-stream; charset=utf-8",
+      "bytes": 126828,
+      "sha256": "1b099f88c06ed0869872561c157f0ec9cbe133a0939d9ece4ee1e1f54bd4683d"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-regular-400.woff2",
+      "path": "assets/23d9556c69fbb9c91256e795.bin",
+      "content_type": "application/octet-stream; charset=utf-8",
+      "bytes": 23900,
+      "sha256": "fa79fc4f2559112ff3dd27cf5be216d9b5f88066ceef728264f5a3a1a195fc1e"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2",
+      "path": "assets/c5a06e8fe184dfeec0e27f65.bin",
+      "content_type": "application/octet-stream; charset=utf-8",
+      "bytes": 104544,
+      "sha256": "29bc44694c394921d1f00271128a2e4cd8293516216e24eac07a73fa821fc1f5"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSGmu1aB.woff2",
+      "path": "assets/15e4e18f7f0b68ee43e2e414.woff2",
+      "content_type": "font/woff2",
+      "bytes": 35156,
+      "sha256": "d5bab8e28732fe3d10dcef4f77b9c248605bbb2a87d289a2539251ceafab536a"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7Z1JlFc-K.woff2",
+      "path": "assets/65b8b346041d66fac8e433a5.woff2",
+      "content_type": "font/woff2",
+      "bytes": 5432,
+      "sha256": "ccfd87f69ef00d811da3d06488cec4e79ec99d289cfbcbe4be42031cecae775a"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTUGmu1aB.woff2",
+      "path": "assets/c9cd65148af3a3ad2f6f3053.woff2",
+      "content_type": "font/woff2",
+      "bytes": 26596,
+      "sha256": "8f80f993e523f2e6c2d097552740fd26331658da23ffad31d26edcdd3aeec370"
+    },
+    {
+      "url": "https://api.lanyard.rest/v1/users/743378293910142998",
+      "path": "assets/d4f1878aafbb11712f01c4ad.json",
+      "content_type": "application/json; charset=utf-8",
+      "bytes": 2088,
+      "sha256": "1a3cfd0989af97830946d4299786992df1cb0e0fbd62bb03414a4903f06751de"
+    },
+    {
+      "url": "https://cdn.discordapp.com/avatars/743378293910142998/84deb7f9e4fb6a3f40c54f22a81646fd.png?size=64",
+      "path": "assets/ff193bbefec6a5c33693c2fe.png",
+      "content_type": "image/png",
+      "bytes": 7775,
+      "sha256": "daab8658b82df293c0ef431ac3ebbc5f9d5370e714259065b0dd6be64bfe524b"
+    },
+    {
+      "url": "https://cdn.discordapp.com/avatars/743378293910142998/84deb7f9e4fb6a3f40c54f22a81646fd.png?size=1024",
+      "path": "assets/52b47b43e5e660f1f0712964.png",
+      "content_type": "image/png",
+      "bytes": 313797,
+      "sha256": "bdee19a68f2aff6b4ad33d82e026fd55b4669a89a5303340829d8761fc194179"
+    },
+    {
+      "url": "https://cdn.discordapp.com/avatar-decoration-presets/a_4539f720c2c576feca9de41b8dc413e8.png?size=1024",
+      "path": "assets/77a8821f65d0599ab7745cb8.png",
+      "content_type": "image/png",
+      "bytes": 385907,
+      "sha256": "e61be898566fe31ce7c8200008863782f14396244d595c3135c49900d9858f49"
+    },
+    {
+      "url": "https://i.imgur.com/removed.png",
+      "path": "assets/e53c16c91b6d04279f543fb8.png",
+      "content_type": "image/png",
+      "bytes": 503,
+      "sha256": "9b5936f4006146e4e1e9025b474c02863c0b5614132ad40db4b925a10e8bfbb9"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3GUBGEe.woff2",
+      "path": "assets/78e4260aaa9498dc0fc5ab20.woff2",
+      "content_type": "font/woff2",
+      "bytes": 36652,
+      "sha256": "01f94d674db55952c35898fa4da22c3e7065c3cc4dbbcc9cb7beb8b6b017fbc9"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBGEe.woff2",
+      "path": "assets/000fec62282349e8b4ef8f64.woff2",
+      "content_type": "font/woff2",
+      "bytes": 23664,
+      "sha256": "481dd0c01e6bbb129fd147eb5d8571016193cba141c4627ca60ceabdb5a46ea8"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3CUBGEe.woff2",
+      "path": "assets/b1014ee1bc15a515262e6f53.woff2",
+      "content_type": "font/woff2",
+      "bytes": 4348,
+      "sha256": "ec7769b089813996276482bbe7017adfffdd6c7543fd1f76244e2ffc1138ed86"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3-UBGEe.woff2",
+      "path": "assets/cfdf6f20d497ac43dbea3c59.woff2",
+      "content_type": "font/woff2",
+      "bytes": 17624,
+      "sha256": "97fbf7bd0b4579e632392a4f483acdae73cbf59ad90c1e5d2c5ec4044c377fce"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMawCUBGEe.woff2",
+      "path": "assets/cf69d4bd86681ac6b08280c9.woff2",
+      "content_type": "font/woff2",
+      "bytes": 41348,
+      "sha256": "7cb4281a0ccc84cc18617842c639fc66541cbef94a9dd245c754700210b4fcec"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMaxKUBGEe.woff2",
+      "path": "assets/f24f53f8e279cd03f183e0d2.woff2",
+      "content_type": "font/woff2",
+      "bytes": 20556,
+      "sha256": "2addf2d86d7a5778653b36d551e97a39da52855f82fac7461cfc1bd86d460aed"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3OUBGEe.woff2",
+      "path": "assets/ce075ab86dc1c623078bad90.woff2",
+      "content_type": "font/woff2",
+      "bytes": 14340,
+      "sha256": "0b60bbe04e9c479444b31270a72179f53e400beee57b7dd176c08e5e2e716831"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3KUBGEe.woff2",
+      "path": "assets/4e54fc361061b452afd8ddea.woff2",
+      "content_type": "font/woff2",
+      "bytes": 29392,
+      "sha256": "cedb374b05a35034cf96db185db4eeb8f8ce49e1a56197673702ff11b5533d6e"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2",
+      "path": "assets/890de452eac592c62afc274f.woff2",
+      "content_type": "font/woff2",
+      "bytes": 43136,
+      "sha256": "1404ca348bd75ef836f4dd8b6f2cc719458642d1237c368296b2fc652dca47dc"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/robotoslab/v36/BngMUXZYTXPIvIBgJJSb6ufA5qW54A.woff2",
+      "path": "assets/dc1cf3d20a78fa782c5ae1c5.woff2",
+      "content_type": "font/woff2",
+      "bytes": 32340,
+      "sha256": "1dbd6cd2d04f8b494745edb00a5d680647a941ef0a6a92b5dda2f88484e14ea5"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/robotoslab/v36/BngMUXZYTXPIvIBgJJSb6ufJ5qW54A.woff2",
+      "path": "assets/d4918cc0ffd8ecab24087f27.woff2",
+      "content_type": "font/woff2",
+      "bytes": 21420,
+      "sha256": "94ab3efd7d4242d5a6034b2ac62c60ece4ac41d408f74b3b993b897b797e11ed"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/robotoslab/v36/BngMUXZYTXPIvIBgJJSb6ufB5qW54A.woff2",
+      "path": "assets/781a3a3600b6d0d68f1432fa.woff2",
+      "content_type": "font/woff2",
+      "bytes": 2224,
+      "sha256": "427f27a4cad5ee713707e1e39456a2cff8d52eb140be1fcc283431b1b419fcef"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/robotoslab/v36/BngMUXZYTXPIvIBgJJSb6ufO5qW54A.woff2",
+      "path": "assets/0f292467dd5667197a1a8005.woff2",
+      "content_type": "font/woff2",
+      "bytes": 14856,
+      "sha256": "1f4245774a6de07cf40e8d9f6b152b994793d1746c333b4434728f6ae1f8a712"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/robotoslab/v36/BngMUXZYTXPIvIBgJJSb6ufC5qW54A.woff2",
+      "path": "assets/92c9e622d5f8681d756408f8.woff2",
+      "content_type": "font/woff2",
+      "bytes": 9980,
+      "sha256": "6774cefbdbcbb36f47b8a3f0aa51bfbeec1d198e3ddfbaf27f1ecdfad251f43c"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/robotoslab/v36/BngMUXZYTXPIvIBgJJSb6ufD5qW54A.woff2",
+      "path": "assets/5aeab3ebadffca8b8037c254.woff2",
+      "content_type": "font/woff2",
+      "bytes": 21188,
+      "sha256": "8ed24f94c25ecf99a50b806ef6ca02988cf8c1d443228ddbd6a8ac99c99df81e"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/robotoslab/v36/BngMUXZYTXPIvIBgJJSb6ufN5qU.woff2",
+      "path": "assets/eb4a903836593fb9cf1a9001.woff2",
+      "content_type": "font/woff2",
+      "bytes": 34236,
+      "sha256": "50cf7d32c18e1001749b51f1565ef745bc0687b0297b2b13465ed577cc20a8ff"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/nunitosans/v19/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfGWVpNn64CL7U8upHZIbMV51Q42ptCp7t4R-tCKQ.woff2",
+      "path": "assets/26fd2a0c2370d173bbc4b670.woff2",
+      "content_type": "font/woff2",
+      "bytes": 21752,
+      "sha256": "8a8e11bad67c3ae75ba03c969fbe5742b8bf088f1b2ca2dd04610a352475ee37"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/nunitosans/v19/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfGWVpNn64CL7U8upHZIbMV51Q42ptCp7txR-tCKQ.woff2",
+      "path": "assets/914757c473d001915ac51058.woff2",
+      "content_type": "font/woff2",
+      "bytes": 16388,
+      "sha256": "d3fe75d4c86f6df84f37c76ad44fa21c45778d7e14160b0294f92ec248fa144a"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/nunitosans/v19/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfGWVpNn64CL7U8upHZIbMV51Q42ptCp7t6R-tCKQ.woff2",
+      "path": "assets/b244a507f04d9991c88cd4b1.woff2",
+      "content_type": "font/woff2",
+      "bytes": 10308,
+      "sha256": "05ad6c0ccbb6fc76af1914c0cc9572479659333cc00c236619df61222c48a886"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/nunitosans/v19/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfGWVpNn64CL7U8upHZIbMV51Q42ptCp7t7R-tCKQ.woff2",
+      "path": "assets/fb6fa3f396d005b44154deae.woff2",
+      "content_type": "font/woff2",
+      "bytes": 27908,
+      "sha256": "c648ee5bfda70d44b9fb628f4114d1cc4f984d050cbb4881052237ede3638a2e"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/nunitosans/v19/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfGWVpNn64CL7U8upHZIbMV51Q42ptCp7t1R-s.woff2",
+      "path": "assets/16838be1ea2152961fc1e475.woff2",
+      "content_type": "font/woff2",
+      "bytes": 31076,
+      "sha256": "29e3890496844a9ea81975c52771c587c872b4eb317026422d1995b88d21b57d"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7Z11lFc-K.woff2",
+      "path": "assets/6143f42698cf18797c722d3e.woff2",
+      "content_type": "font/woff2",
+      "bytes": 39252,
+      "sha256": "de10eb6f1f452594080f69e1e4925fc68f2d594b4837c70b6c8e6ac0e8384916"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSKmu1aB.woff2",
+      "path": "assets/54dc4394a39583c5db6418fd.woff2",
+      "content_type": "font/woff2",
+      "bytes": 49268,
+      "sha256": "95dd03b930aca04ab393f625101f7367e3abc83b3b09e6074de1fc081ba6fd1c"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSumu1aB.woff2",
+      "path": "assets/378793266a617dca9c6d2439.woff2",
+      "content_type": "font/woff2",
+      "bytes": 26588,
+      "sha256": "2809606237a64bd9c1461e727f369ddfd77a350e4900fffe64e8bfe16a2b3454"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSOmu1aB.woff2",
+      "path": "assets/d2c37667ab34ed9c8fcf9c3b.woff2",
+      "content_type": "font/woff2",
+      "bytes": 4504,
+      "sha256": "197ef1e4874d6f8f59bcb8f303029b7fd40aebd7a23aa96c1b649b3faea5d57c"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSymu1aB.woff2",
+      "path": "assets/a5de8562f3e71d80332bc843.woff2",
+      "content_type": "font/woff2",
+      "bytes": 21332,
+      "sha256": "08ea4cf0a7c61077656395aa7dc728a6d184ee4bdae03a1bc34c17ee97e8f31c"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS2mu1aB.woff2",
+      "path": "assets/187f7f97f1f1f2c6e6a31582.woff2",
+      "content_type": "font/woff2",
+      "bytes": 16920,
+      "sha256": "7abb700b280437b795e68b3a85a1dcbfdf04bb815555762033ade4f7894f2554"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTVOmu1aB.woff2",
+      "path": "assets/5788f695d4d515e7273028a9.woff2",
+      "content_type": "font/woff2",
+      "bytes": 51912,
+      "sha256": "a093b888254afd7deb8e37cccfd434e7d06ed47d22cfed9621631d80e1e81554"
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSCmu1aB.woff2",
+      "path": "assets/fa05f58692f9f221e1a62184.woff2",
+      "content_type": "font/woff2",
+      "bytes": 16496,
+      "sha256": "cc762462ea67b7815649ea3cc005699e3b95b3244b59eb2ce2d22e3ad33497c2"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.ttf",
+      "path": "assets/f9f56d56c1cd7a39b2390463.bin",
+      "content_type": "application/octet-stream; charset=utf-8",
+      "bytes": 180148,
+      "sha256": "9e122861bc5f7d6190d580b22acc5b1c3f8cdba9f495593cccd3b47d2cbfa2fd"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-regular-400.ttf",
+      "path": "assets/050ce9b6ebe6c7e76d232276.bin",
+      "content_type": "application/octet-stream; charset=utf-8",
+      "bytes": 60380,
+      "sha256": "709034805d10429d24862ad685d561808328329debdbca4f70487b508320a3ff"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.ttf",
+      "path": "assets/b0edb2ae1490690ed7011f41.bin",
+      "content_type": "application/octet-stream; charset=utf-8",
+      "bytes": 303480,
+      "sha256": "1782156bfa2054db429277b42f143298a1ce03437c05e2779ca7875112b19d3c"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-v4compatibility.woff2",
+      "path": "assets/a23a0641797bcb8761f991dd.bin",
+      "content_type": "application/octet-stream; charset=utf-8",
+      "bytes": 4956,
+      "sha256": "b3abfccce275536beaaeba990e900a0c08ed2fefbabf4a8bcbb2e2ffe3f2431f"
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-v4compatibility.ttf",
+      "path": "assets/8e7d8aa56bdf80b3ad78529d.bin",
+      "content_type": "application/octet-stream; charset=utf-8",
+      "bytes": 10556,
+      "sha256": "fde941c0964fab984f6af0697b3fec92e7df384eec9941babfd3e4cbbd6211c2"
+    }
+  ],
+  "warnings": [],
+  "zip": {
+    "path": "responses/req-47a314ab-0e86-4faf-aad4-9384870e2102.zip",
+    "bytes": 2428246,
+    "sha256": "19cb478978d1291438f05609fb02df597033cd514df6eb2d9b8180183c3d7c01"
+  },
+  "snapshot": {
+    "javascript_enabled_during_capture": true,
+    "javascript_removed_from_output": true
+  },
+  "request_sha": "d2ee0ee0b60e317005d78aebc879faab844da344"
+}
