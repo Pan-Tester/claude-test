@@ -4,6 +4,9 @@ Zaimplementuj klienta, który przesyła żądania pobrania stron przez pliki w r
 i odbiera wyniki zapisane przez działający osobno serwer. Serwer wykonuje JavaScript w Chromium
 i oddaje statyczną migawkę HTML oraz ZIP z assetami. Nie trzeba implementować serwera.
 
+Serwer obsługuje teraz również sesje i interakcje. Klient pokazuje aktualny widok,
+wysyła akcje do Chromium na serwerze i po każdym kroku podmienia HTML/ZIP/screenshot.
+
 ## Stałe i dostęp
 
 - Repozytorium: `Pan-Tester/claude-test`.
@@ -38,7 +41,8 @@ Utwórz bajty UTF-8 pliku `requests/<id>.json`, np.:
 }
 ```
 
-Jedynymi dozwolonymi polami są `id` i `url`. `id` można pominąć; jeśli jest podane,
+Dozwolone pola to `id`, `url`, `session_id`, `expected_revision`, `actions` i `close_session`.
+`id` można pominąć; jeśli jest podane,
 musi zgadzać się z nazwą pliku bez `.json`. Maksymalny rozmiar żądania to 16 KiB.
 Adresy HTTP/HTTPS są obsługiwane na portach 80/443; można też podać `google.com`.
 
@@ -78,7 +82,7 @@ po krótkim opóźnieniu. Nie nadpisuj cudzych plików. Wysyłaj kolejne pliki s
 Przed pierwszym pollowaniem sprawdź dostęp do repo/brancha. Nie traktuj nieistniejącego
 repo albo braku dostępu jako oczekiwania na wynik.
 
-Co około 10 sekund pobierz bieżący commit:
+Co około 3–5 sekund pobierz bieżący commit:
 
 ```http
 GET /repos/Pan-Tester/claude-test/git/ref/heads/main
@@ -196,12 +200,141 @@ Wyświetl `index.html` przez lokalny serwer HTTP lub odpowiedni sandboxowany pod
 obsługujący względne ścieżki. Samo wklejenie `html` do dokumentu pod obcym URL-em
 nie zapewni poprawnego ładowania `assets/...`.
 
-To statyczna migawka głównego dokumentu po JS. Nie odtwarza sesji, formularzy, logowania,
-iframe, canvas, późniejszych API ani działania aplikacji offline. Nie usuwaj CSP z wyniku
-i nie przywracaj skryptów. Linki do innych stron mogą pozostać adresami zdalnymi.
+To statyczna migawka głównego dokumentu po JS. Interakcje, formularze i kolejne API wykonują
+się w sesji na serwerze, a klient odbiera nowy widok. Nie uruchamiaj kopii jako samodzielnej
+aplikacji offline. Nie usuwaj CSP i nie przywracaj skryptów. Linki do innych stron mogą
+pozostać adresami zdalnymi — klient powinien przechwytywać kliknięcia. Canvas obejrzyj
+na `screenshot.png`; kliknięcia współrzędnymi dotyczą widoku na tym screenshocie.
 
 Nie zapisuj ani nie usuwaj plików w `responses/`; zarządza nimi serwer.
 Nie kasuj żądania, dopóki worker pracuje. Utrzymuj mapowanie lokalnego zadania do jego ID.
+
+## 6. Stała sesja i akcje — obowiązujący protokół interakcji
+
+Otwórz sesję, wybierając unikalne `session_id` z takimi samymi ograniczeniami jak ID żądania:
+
+```json
+{
+  "id":"req-open-001",
+  "session_id":"session-browser-abc",
+  "url":"https://www.google.com/"
+}
+```
+
+Odpowiedź `done` zachowuje dotychczasowe pola oraz dodaje:
+
+```json
+{
+  "session_id":"session-browser-abc",
+  "revision":1,
+  "session_ttl_seconds":900,
+  "actions_completed":0,
+  "elements":[
+    {
+      "element_id":"e12",
+      "selector":"[data-relay-id=\"e12\"]",
+      "tag":"textarea",
+      "type":null,
+      "text":"Search",
+      "href":null,
+      "disabled":false,
+      "visible":true,
+      "rect":{"x":50,"y":100,"width":400,"height":40}
+    }
+  ],
+  "viewport":{"width":1365,"height":768,"scroll_x":0,"scroll_y":0},
+  "screenshot":{"path":"screenshot.png","bytes":12345,"sha256":"<SHA256_PNG>"}
+}
+```
+
+To uzupełnienie pełnej odpowiedzi, nie osobny plik. `elements` opisuje do 1000 elementów
+głównego dokumentu. Te same ID są w HTML jako `data-relay-id`. Mogą zmienić się po nawigacji,
+więc zawsze korzystaj z najnowszego widoku i najnowszej wersji. `screenshot.png` jest w ZIP-ie.
+
+Kontynuuj z nowym ID, **bez `url`**, jeśli strona ma pozostać otwarta:
+
+```json
+{
+  "id":"req-action-002",
+  "session_id":"session-browser-abc",
+  "expected_revision":1,
+  "actions":[
+    {"type":"fill","element_id":"e12","value":"test relay"},
+    {"type":"press","element_id":"e12","key":"Enter"}
+  ]
+}
+```
+
+Podany `e12` jest przykładem: odczytaj faktyczne ID pola z odpowiedzi. Serwer utrzymuje
+ten sam kontekst Chromium, DOM, cookies, storage i historię. HTTP formularzy i API jest
+obsługiwane, także POST/PUT/PATCH/DELETE. Token GitHuba nie jest przekazywany do stron.
+
+`expected_revision` musi odpowiadać ostatniej odpowiedzi dla tej sesji. Jest wymagane
+dla każdej zmiany istniejącej sesji, również nawigacji i zamknięcia. Pierwsze otwarcie
+może je pominąć lub użyć `0`. Przed wysłaniem kolejnego kroku poczekaj na wynik poprzedniego.
+Każdy wykonany krok zwiększa wersję. Stara wersja daje `status: error` i aktualną `revision`,
+bez wykonania akcji. Nie odtwarzaj automatycznie starego kliknięcia na nowym widoku.
+
+Obsługiwane akcje:
+
+| type | Pola | Efekt |
+| --- | --- | --- |
+| `click` | `selector` albo `element_id`; alternatywnie `x` i `y` | Kliknięcie elementu lub punktu viewportu |
+| `fill` | cel + `value` jako string | Zastąpienie tekstu w polu |
+| `press` | cel + `key`, np. `Enter`, `Control+A` | Klawisz w danym elemencie |
+| `select` | cel + `value` jako string | Wybór opcji select |
+| `check` | cel + `checked` jako boolean | Ustawienie checkboxa/radio |
+| `hover` | cel | Najechanie kursorem |
+| `scroll` | `x`, `y` jako liczby całkowite; brak osi = 0 | Przewinięcie o podaną liczbę pikseli |
+| `wait` | `ms` od 0 do 10000 | Oczekiwanie |
+| `wait_for` | cel + opcjonalne `state` | Oczekiwanie na visible/hidden/attached/detached; domyślnie visible |
+| `navigate` | `url` | Otwarcie nowego adresu w tej samej sesji |
+| `back`, `forward`, `reload` | brak dodatkowych pól | Historia lub odświeżenie strony |
+
+Cel oznacza dokładnie jedno z pól `selector` lub `element_id`. Selector powinien wskazywać
+jeden element. Dla kliknięcia współrzędnymi nie podawaj celu. Współrzędne kliknięcia są
+nieujemne, dotyczą pikseli CSS aktualnego viewportu, a nie współrzędnych całej strony.
+Zakres osi to -20000..20000; kliknięcie nie dopuszcza wartości ujemnych. Limity: 20 akcji,
+16 KiB całego JSON-a, 8 sekund na akcję i 60 sekund na cały krok domyślnie.
+Nie ma akcji wykonującej dowolny kod JavaScript.
+
+W interfejsie klienta przechwytuj kliknięcia i formularze. Znajdź najbliższy element
+z `data-relay-id`, zatrzymaj lokalną nawigację i wyślij akcję do serwera. Lokalnie edytowane
+wartości pól prześlij jako `fill` przed kliknięciem przycisku lub `press: Enter`. Podczas
+oczekiwania blokuj kolejne zmiany w tej samej sesji. Po odebraniu wyniku podmień katalog
+assetów i widok, zachowaj nowe `revision` oraz listę `elements`. Dla screenshotu uwzględnij
+skalowanie obrazu przy przeliczaniu współrzędnych. Nie włączaj skryptów z pobranej strony.
+
+Odświeżenie widoku bez zmiany adresu:
+
+```json
+{"id":"req-refresh-003","session_id":"session-browser-abc","expected_revision":2}
+```
+
+Zamknięcie sesji:
+
+```json
+{"id":"req-close-004","session_id":"session-browser-abc","expected_revision":3,"close_session":true}
+```
+
+Odpowiedź zamknięcia ma `status: closed`, `session_id` i `revision`, **bez ZIP-a i HTML-a**.
+Uwzględnij ten trzeci status w parserze klienta. `close_session` nie może mieć `url` ani akcji.
+
+Sesje wygasają po 900 sekundach bezczynności; serwer utrzymuje maksymalnie 10 sesji.
+Restart usuwa konteksty. `session_expired: true` w błędzie oznacza konieczność nowego
+otwarcia z nowym `session_id`. Nie odtwarzaj automatycznie wysłanych formularzy.
+JavaScript jest wstrzymany między krokami; `wait` uruchamia go na czas oczekiwania.
+
+Błąd interakcji może zawierać `actions_completed`, `session_id` i zwiększoną `revision`.
+Wcześniejsze akcje z batcha mogły się udać; nie cofają się automatycznie. Pobierz widok
+żądaniem bez akcji i zdecyduj o kolejnym kroku. Gotowe wyniki są buforowane przed publikacją,
+żeby ponowienie GitHub API nie wykonywało znów akcji. Nagła awaria podczas samej akcji
+nie gwarantuje wycofania zmian na zewnętrznej stronie.
+
+WebSocket/EventSource/Service Worker są wyłączone. Dialogi JS są odrzucane automatycznie.
+Nowa karta po kliknięciu staje się stroną sesji, a poprzednia karta jest zamykana.
+Przekierowanie dokumentu 307/308 z body nie jest obsługiwane. Repo jest publiczne:
+nie przesyłaj haseł ani innych poufnych wartości w JSON-ach; są zapisane w historii Git.
 
 ## Źródła interfejsu GitHub
 
