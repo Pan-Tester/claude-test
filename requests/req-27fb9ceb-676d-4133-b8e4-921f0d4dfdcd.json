@@ -1,0 +1,12 @@
+{
+  "session_id": "session-test-a970883c",
+  "expected_revision": 2,
+  "actions": [
+    {
+      "type": "scroll",
+      "x": 0,
+      "y": 400
+    }
+  ],
+  "id": "req-27fb9ceb-676d-4133-b8e4-921f0d4dfdcd"
+}
