@@ -1,0 +1,24 @@
+{
+  "id": "interaction-ee02169ff696-act",
+  "session_id": "browser-afcc0b6f0163",
+  "expected_revision": 1,
+  "actions": [
+    {
+      "type": "click",
+      "selector": "h1"
+    },
+    {
+      "type": "hover",
+      "selector": "a"
+    },
+    {
+      "type": "press",
+      "selector": "body",
+      "key": "PageDown"
+    },
+    {
+      "type": "scroll",
+      "y": 50
+    }
+  ]
+}
