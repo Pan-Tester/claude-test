@@ -1,0 +1,17 @@
+{
+  "session_id": "session-test-a970883c",
+  "expected_revision": 1,
+  "actions": [
+    {
+      "type": "fill",
+      "element_id": "e8",
+      "value": "test relay"
+    },
+    {
+      "type": "press",
+      "element_id": "e8",
+      "key": "Enter"
+    }
+  ],
+  "id": "req-de60b1d4-3bc2-4f5a-99ae-0c113b6cd1a9"
+}
